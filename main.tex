@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt,oneside,hyphens]{book}
+\usepackage{style/cryptostyle}
+
+\begin{document}
+
+
+\frontmatter
+
+
+\import{}{frontpage/title.tex}
+\import{}{chapter/disclaimer.tex}
+
+\clearpage
+
+
+\afterpage{\extramarks{}{(continued)}}
+\tableofcontents
+
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+
+
+\mainmatter
+\pagestyle{fancy}
+
+\import{chapter/}{01_Introduction}
+
+\import{chapter/}{02_Exchanges}
+\import{chapter/}{03_Wallets}
+\import{chapter/}{04_Security}
+\import{chapter/}{05_Research}
+
+\part{DOWN THE RABBIT HOLE}
+
+\import{chapter/}{History2}
+\import{chapter/}{08_Future of Money}
+\import{chapter/}{Ledger}
+\import{chapter/}{10_Ice Age}
+
+\part{INVESTING, TRADING, MARKETS \& PORTFOLIO}
+
+\import{chapter/}{13_Investing}
+\import{chapter/}{12_Portfolio}
+
+\part{CRYPTOWORLD}
+
+%\import{chapter/}{14_Crypto Terms}
+
+\part*{DOWN THE RABBIT HOLE}
+
+\import{chapter/}{06_Bitcoin}
+\import{chapter/}{07_History} 
+\import{chapter/}{08_Future of Money} 
+
+\part*{FOLLOW THE RABBIT}
+
+\import{chapter/}{09_Fourth} 
+\import{chapter/}{11_Epilogue}
+
+%\part*{In Depth Technical E-Manual}
+%\import{chapter/}{Wallets Technical}
+
+
+
+\appendix
+\import{appendices/}{appendices}
+
+
+
+\backmatter
+
+%\printbibliography
+
+\printendnotes
+
+\end{document}

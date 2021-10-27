@@ -1,0 +1,285 @@
+% Declare that this style file requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+% Provide the name of your page, the date it was last updated, and a comment about what it's used for
+\ProvidesPackage{cryptostyle}[2020/01/23, Cryptomanuals style template]
+
+% Preamble
+
+\RequirePackage[]{textcomp}
+\RequirePackage[english]{babel}
+\RequirePackage{graphicx}
+\RequirePackage[table,xcdraw]{xcolor}
+\RequirePackage{blindtext}
+\RequirePackage{textcomp}
+\RequirePackage{dirtytalk}
+
+\RequirePackage[defaultfam,tabular,lining]{montserrat} % Option 'defaultfam'
+
+%% only if the base font of the document is to be sans serif
+
+\RequirePackage[T1]{fontenc}%select font encodings
+\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
+
+\RequirePackage{import}%import other .tex files in main.tex
+\RequirePackage{amsmath}%adapts for use in LATEX most of the mathematical features found in AMS-TEX; it is highly recommended as an adjunct to serious mathematical typesetting in LATEX.
+\RequirePackage{amsfonts}%extended set of fonts for use in mathematics
+\RequirePackage{amssymb}%symbols
+\RequirePackage{enumitem}%enumerated lists
+
+
+
+
+
+\RequirePackage{lastpage}%Reference the number of pages in your LATEX document through the introduction of a new label which can be referenced like \pageref{LastPage}
+
+\RequirePackage[latin1]{inputenc}%translates various standard and other input encodings into a ‘LATEX internal language’
+
+
+
+%\RequirePackage{cite}
+
+\RequirePackage{pdflscape} % for 'landscape' environment
+\RequirePackage{{style/pgf-pie}}
+
+\RequirePackage{pdfpages}
+
+\RequirePackage[
+backend=biber,
+style=apa,
+sorting=nyt
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+\RequirePackage{lipsum}
+
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{varwidth}
+
+\definecolor{cryptogold}{RGB}{253,195,000}
+\definecolor{cryptoblue}{RGB}{0,185,253}
+\definecolor{cryptoorange}{RGB}{253,69,0}
+\definecolor{cryptogreen}{RGB}{0,253,68}
+\definecolor{background}{RGB}{255,249,229}
+
+
+\RequirePackage{fnpct}
+
+\usetikzlibrary{patterns} % preamble
+\tcbuselibrary{skins} % preamble
+\tcbset{ribbonbox/.style={
+enhanced,
+colbacktitle=black,
+colback=background,
+colframe=cryptogold,
+coltitle=cryptogold,
+fonttitle=\bfseries,
+overlay={\path[fill=green!75!white,draw=green,
+double=white!85!blue,
+preaction={opacity=0.6,fill=green!75!white},
+line width=0.1mm,
+double distance=0.2mm,
+pattern=fivepointed stars,
+pattern color=white!75!blue]
+([xshift=-0.2mm,yshift=-1.02cm]frame.north east)
+-- ++(-1,1) -- ++(-0.5,0) -- ++(1.5,-1.5) -- cycle;}}}
+
+
+\newtcolorbox{cryptobox}[1]{
+    enhanced,
+    colbacktitle=black,
+    colback=background,
+    colframe=cryptogold,
+    coltitle=cryptogold,
+    boxrule=0.5mm,
+    title=#1,
+    boxed title style={frame code={
+    \path[fill=tcbcolback!30!black]
+    ([yshift=-1mm,xshift=-1mm]frame.north west)
+    arc[start angle=0,end angle=180,radius=1mm]
+    ([yshift=-1mm,xshift=1mm]frame.north east)
+    arc[start angle=180,end angle=0,radius=1mm];
+    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+    middle color=tcbcolback!80!black]
+    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+    -- (frame.south east) -- (frame.south west)
+    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+    [sharp corners]-- cycle;
+    },interior engine=empty,
+    },
+}
+
+
+
+\newtcolorbox{tipbox}[2][]{
+enhanced,
+before skip=2mm,
+after skip=2mm,
+colbacktitle=cryptogreen,
+colback=background,
+colframe=cryptogold,
+boxrule=0.5mm,
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=tcbcolback!30!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+middle color=tcbcolback!80!black]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},#1}
+
+\newtcolorbox{topbox}[2][]{
+enhanced,
+before skip=2mm,
+after skip=2mm,
+colbacktitle=cryptogreen,
+colback=background,
+colframe=cryptogold,
+boxrule=0.5mm,
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=tcbcolback!30!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+middle color=tcbcolback!80!black]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},#1
+}
+
+
+\newtcolorbox{borderbox}{
+left=0mm,
+right=0mm,
+top=0mm,
+bottom=0mm,
+boxsep=1mm,
+arc=0mm,
+boxrule=0.5pt,
+sharp corners, 
+boxrule=0.5mm,
+colframe=cryptogold,
+colback=background
+}
+
+
+
+\RequirePackage{csquotes}
+
+\RequirePackage[super]{nth}
+
+
+\newcommand{\ts}{\textsuperscript}
+
+\RequirePackage[skip=5pt]{caption}
+\RequirePackage{subcaption} 
+\RequirePackage[aboveskip=2pt]{subcaption}
+
+
+
+\newcommand{\source}[1]{\vspace{2pt}\caption*{ \textbf{Source:} {#1}}}
+
+
+
+\RequirePackage{pdflscape} % for 'landscape' environment
+\RequirePackage{float, longtable, lscape}
+
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+\RequirePackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\RequirePackage[labelfont=bf]{caption}
+\RequirePackage{eurosym}
+
+
+\RequirePackage{enotez}
+
+
+\RequirePackage{hyperref}
+\hypersetup{
+pdfauthor=      {M.Kruisbrink, A Dijkstra},
+pdfnewwindow=   {false},
+colorlinks=false,
+colorlinks=true,
+linkcolor=red,
+citecolor=green,
+filecolor=magenta,
+urlcolor=cyan,
+}
+\RequirePackage{cleveref}
+
+
+
+
+%Header styles
+\RequirePackage[headheight=90pt, footskip=45pt, tmargin=90pt]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{afterpage}
+\RequirePackage{extramarks}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+\pagestyle{fancy} %all pages except chapter pages
+\fancyhf{}%
+
+\fancyhead[R]{}
+\fancyhead[L]{\makebox[\textwidth]{\includegraphics[width=\paperwidth]{spacers/200220_CRYPTOMANUALS_WEBSITE_SPACERS_1920x260-3.png}}}
+\fancyfoot[R]{\thepage \includegraphics[width=1cm]{logo/CRYPTO_M_BUNNY_B_LOGO_POS_RGB.png}}
+\fancyfoot[L]{{\nouppercase{\leftmark}}}
+
+    
+\fancypagestyle{plain}{ %chapter pages
+    \fancyhf{}%
+    \fancyfoot[R]{\thepage}%
+    \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+    \renewcommand{\footrulewidth}{0pt}% Line at the footer visible
+}
+
+
+
+\RequirePackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\pgfplotsset{compat=1.15}
+
+\RequirePackage{tikz}
+
+\usetikzlibrary{shapes,arrows,chains, arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,petri}
+
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+
+
+% Finally, we'll use \endinput to indicate that LaTeX can stop reading this file. LaTeX will ignore anything after this line.
+\endinput
